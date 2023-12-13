@@ -1,0 +1,21 @@
+pluginManagement {
+    repositories {
+        mavenCentral()
+        gradlePluginPortal()
+        maven { url 'https://repo.spring.io/milestone' }
+        maven { url "https://repo.spring.io/snapshot" }
+    }
+    resolutionStrategy {
+        eachPlugin {
+            if (requested.id.id == "io.spring.javaformat") {
+                useModule "io.spring.javaformat:spring-javaformat-gradle-plugin:${requested.version}"
+            }
+        }
+    }
+}
+
+plugins {
+    id "com.gradle.enterprise" version "3.10.2"
+    id "io.spring.ge.conventions" version "0.0.14"
+}
+
