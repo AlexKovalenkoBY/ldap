@@ -37,7 +37,7 @@ public class HelloController {
 
 	@GetMapping("/friendly")
 	public String hello(@AuthenticationPrincipal Person person) {
-		return "Hello, " + person.getGivenName() + "!!";
+		return "Hello, " + person.getSn() + "!!";
 	}
 
 }

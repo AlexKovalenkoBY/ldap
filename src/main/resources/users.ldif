@@ -1,14 +1,23 @@
-dn: ou=groups,dc=springframework,dc=org
+# Корневая запись домена test.bpab.internal
+dn: dc=test,dc=bpab,dc=internal
+objectClass: top
+objectClass: domain
+dc: test
+
+# Организационная единица 'groups'
+dn: ou=groups,dc=test,dc=bpab,dc=internal
 objectclass: top
 objectclass: organizationalUnit
 ou: groups
 
-dn: ou=people,dc=springframework,dc=org
+# Организационная единица 'people'
+dn: ou=people,dc=test,dc=bpab,dc=internal
 objectclass: top
 objectclass: organizationalUnit
 ou: people
 
-dn: uid=admin,ou=people,dc=springframework,dc=org
+# Пользователь 'admin'
+dn: uid=admin,ou=people,dc=test,dc=bpab,dc=internal
 objectclass: top
 objectclass: person
 objectclass: organizationalPerson
@@ -18,7 +27,8 @@ sn: Johnson
 uid: admin
 userPassword: password
 
-dn: uid=user,ou=people,dc=springframework,dc=org
+# Пользователь 'user'
+dn: uid=user,ou=people,dc=test,dc=bpab,dc=internal
 objectclass: top
 objectclass: person
 objectclass: organizationalPerson
@@ -29,15 +39,17 @@ uid: user
 userPassword: password
 givenName: Dianne Emu
 
-dn: cn=user,ou=groups,dc=springframework,dc=org
+# Группа 'user'
+dn: cn=user,ou=groups,dc=test,dc=bpab,dc=internal
 objectclass: top
 objectclass: groupOfNames
 cn: user
-member: uid=admin,ou=people,dc=springframework,dc=org
-member: uid=user,ou=people,dc=springframework,dc=org
+member: uid=admin,ou=people,dc=test,dc=bpab,dc=internal
+member: uid=user,ou=people,dc=test,dc=bpab,dc=internal
 
-dn: cn=admin,ou=groups,dc=springframework,dc=org
+# Группа 'admin'
+dn: cn=admin,ou=groups,dc=test,dc=bpab,dc=internal
 objectclass: top
 objectclass: groupOfNames
 cn: admin
-member: uid=admin,ou=people,dc=springframework,dc=org
+member: uid=admin,ou=people,dc=test,dc=bpab,dc=internal

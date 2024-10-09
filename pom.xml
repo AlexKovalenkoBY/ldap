@@ -31,6 +31,11 @@
 	</properties>
 	<dependencies>
 		<dependency>
+            <groupId>com.unboundid</groupId>
+            <artifactId>unboundid-ldapsdk</artifactId>
+        </dependency>
+
+		<dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-aop</artifactId>
         </dependency>
@@ -85,14 +90,23 @@
 	<build>
 		<plugins>
 			<plugin>
-				<groupId>org.graalvm.buildtools</groupId>
-				<artifactId>native-maven-plugin</artifactId>
-			</plugin>
-			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
+				<version>3.3.4</version>
+				<configuration>
+					<jvmArguments>-Ddebug</jvmArguments>
+					
+				</configuration>
 			</plugin>
 		</plugins>
 	</build>
-
+	<profiles>
+		<profile>
+			<id>debug</id>
+			<properties>
+				<!-- <spring-boot.run.jvmArguments>-Ddebug</spring-boot.run.jvmArguments> -->
+				<!-- <mainClass>com.example.LdapApplication</mainClass> -->
+			</properties>
+		</profile>
+	</profiles>
 </project>
