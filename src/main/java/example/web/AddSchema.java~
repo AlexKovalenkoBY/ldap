@@ -1,0 +1,19 @@
+package example.web;
+
+import com.unboundid.ldap.sdk.LDAPException;
+import com.unboundid.ldap.sdk.LDAPConnection;
+import com.unboundid.ldap.sdk.Modification;
+import com.unboundid.ldap.sdk.ModificationType;
+import com.unboundid.ldap.sdk.Attribute;
+
+public class AddSchema {
+    public static void main(String[] args) {
+        try (LDAPConnection connection = new LDAPConnection("localhost", 1389, "cn=Directory Manager", "password")) {
+            String attributeType = "( 1.3.6.1.4.1.1466.115.121.1.11 NAME 'department' DESC 'Department' EQUALITY caseIgnoreMatch SUBSTR caseIgnoreSubstringsMatch SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )";
+            Modification mod = new Modification(ModificationType.ADD, new Attribute("attributeTypes", attributeType));
+            connection.modify("cn=schema", mod);
+        } catch (LDAPException e) {
+            e.printStackTrace();
+        }
+    }
+}
