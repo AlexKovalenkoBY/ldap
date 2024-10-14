@@ -4,9 +4,6 @@ import com.unboundid.ldap.listener.InMemoryDirectoryServer;
 import com.unboundid.ldap.listener.InMemoryDirectoryServerConfig;
 import com.unboundid.ldap.listener.InMemoryListenerConfig;
 import com.unboundid.ldap.sdk.LDAPException;
-import com.unboundid.ldap.sdk.Modification;
-import com.unboundid.ldap.sdk.ModificationType;
-import com.unboundid.ldap.sdk.Attribute;
 import com.unboundid.ldif.LDIFReader;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.stereotype.Service;
@@ -28,12 +25,6 @@ public class LdifImportService {
 
     @jakarta.annotation.PostConstruct
     public void importLdif() throws IOException, LDAPException {
-        // Добавление атрибута 'department' в схему
-        // String attributeType = "( 1.3.6.1.4.1.1466.115.121.1.11 NAME 'department' DESC 'Department' EQUALITY caseIgnoreMatch SUBSTR caseIgnoreSubstringsMatch SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )";
-
-        // Modification mod = new Modification(ModificationType.ADD, "attributeTypes", attributeType);
-        // directoryServer.modify("cn=schema", mod);
-
         // Импорт LDIF файла
         ClassPathResource resource = new ClassPathResource("users.ldif");
         try (InputStream inputStream = resource.getInputStream()) {
