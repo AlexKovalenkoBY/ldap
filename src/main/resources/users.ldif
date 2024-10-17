@@ -55,6 +55,9 @@ objectclass: groupOfNames
 cn: user
 member: uid=admin,ou=people,dc=test,dc=bpab,dc=internal
 member: uid=user,ou=people,dc=test,dc=bpab,dc=internal
+member: uid=dkuser,ou=DK-U,ou=8,dc=test,dc=bpab,dc=internal
+member: uid=ppouser,ou=PPO-U,ou=8,dc=test,dc=bpab,dc=internal
+member: uid=uvauser,ou=UVA-U,ou=8,dc=test,dc=bpab,dc=internal
 
 # Группа 'admin'
 dn: cn=admin,ou=groups,dc=test,dc=bpab,dc=internal
@@ -69,7 +72,7 @@ objectClass: top
 objectClass: organizationalUnit
 ou: 8
 
-# Группа 'PPO-U'
+# Группа 'PPO-U'member
 dn: ou=PPO-U,ou=8,dc=test,dc=bpab,dc=internal
 objectClass: top
 objectClass: organizationalUnit
@@ -134,3 +137,24 @@ title: DK Specialist
 givenName: DK
 displayName: DK User
 departmentNumber: 501
+
+# Группа 'PPO-U'
+dn: cn=PPO-U,ou=PPO-U,ou=8,dc=test,dc=bpab,dc=internal
+objectclass: top
+objectclass: groupOfNames
+cn: PPO-U
+member: uid=ppouser,ou=PPO-U,ou=8,dc=test,dc=bpab,dc=internal
+
+# Группа 'UVA-U'
+dn: cn=UVA-U,ou=UVA-U,ou=8,dc=test,dc=bpab,dc=internal
+objectclass: top
+objectclass: groupOfNames
+cn: UVA-U
+member: uid=uvauser,ou=UVA-U,ou=8,dc=test,dc=bpab,dc=internal
+
+# Группа 'DK-U'
+dn: cn=DK-U,ou=DK-U,ou=8,dc=test,dc=bpab,dc=internal
+objectclass: top
+objectclass: groupOfNames
+cn: DK-U
+member: uid=dkuser,ou=DK-U,ou=8,dc=test,dc=bpab,dc=internal

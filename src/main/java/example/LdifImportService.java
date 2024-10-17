@@ -26,7 +26,7 @@ public class LdifImportService {
     @jakarta.annotation.PostConstruct
     public void importLdif() throws IOException, LDAPException {
         // Импорт LDIF файла
-        ClassPathResource resource = new ClassPathResource("users.ldif");
+        ClassPathResource resource = new ClassPathResource("2users.ldif");
         try (InputStream inputStream = resource.getInputStream()) {
             LDIFReader ldifReader = new LDIFReader(inputStream);
             directoryServer.importFromLDIF(true, ldifReader);
